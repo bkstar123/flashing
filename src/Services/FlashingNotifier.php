@@ -3,78 +3,116 @@
  * FlashingNotifier Service
  *
  * @author: tuanha
- * @last-mod: tuanha
+ * @last-mod: 09-Sept-2019
  */
 
 namespace Bkstar123\Flashing\Services;
 
+use Bkstar123\Flashing\Message;
+
 class FlashingNotifier
 {
     /**
-     * @param  $message  string
-     * @param  $important  bool
-     * @param  $position  string bottom|top
-     * @param  $timeout  int
+     * @var $message  \Bkstar123\Flashing\Message
      */
-    public function success(string $message = '', bool $important = false, string $position = 'bottom', int $timeout = 5000)
+    public $message;
+
+    /**
+     * Create a message instance
+     *
+     * @param string  $message
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
+     */
+    public function message(string $message)
     {
-        session()->flash('flash_notification', [
-            'message' => $message,
-            'type' => 'success',
-            'important' => $important,
-            'timeout' => $timeout,
-            'position' => in_array($position, ['bottom', 'top']) ? $position : 'bottom',
-        ]);
+        $this->message =  new Message($message);
+        return $this;
     }
 
     /**
-     * @param  $message  string
-     * @param  $important  bool
-     * @param  $position  string bottom|top
-     * @param  $timeout  int
+     * Set message type to success
+     *
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
      */
-    public function error(string $message = '', bool $important = false, string $position = 'bottom', int $timeout = 5000)
+    public function success()
     {
-        session()->flash('flash_notification', [
-            'message' => $message,
-            'type' => 'error',
-            'important' => $important,
-            'timeout' => $timeout,
-            'position' => in_array($position, ['bottom', 'top']) ? $position : 'bottom',
-        ]);
+        $this->message->type('success');
+        return $this;
     }
 
     /**
-     * @param  $message  string
-     * @param  $important  bool
-     * @param  $position  string bottom|top
-     * @param  $timeout  int
+     * Set message type to error
+     *
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
      */
-    public function warning(string $message = '', bool $important = false, string $position = 'bottom', int $timeout = 5000)
+    public function error()
     {
-        session()->flash('flash_notification', [
-            'message' => $message,
-            'type' => 'warning',
-            'important' => $important,
-            'timeout' => $timeout,
-            'position' => in_array($position, ['bottom', 'top']) ? $position : 'bottom',
-        ]);
+        $this->message->type('error');
+        return $this;
     }
 
     /**
-     * @param  $message  string
-     * @param  $important  bool
-     * @param  $position  string bottom|top
-     * @param  $timeout  int
+     * Set message type to success
+     *
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
      */
-    public function info(string $message = '', bool $important = false, string $position = 'bottom', int $timeout = 5000)
+    public function warning()
     {
-        session()->flash('flash_notification', [
-            'message' => $message,
-            'type' => 'information',
-            'important' => $important,
-            'timeout' => $timeout,
-            'position' => in_array($position, ['bottom', 'top']) ? $position : 'bottom',
-        ]);
+        $this->message->type('warning');
+        return $this;
+    }
+
+    /**
+     * Set message type to success
+     *
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
+     */
+    public function info()
+    {
+        $this->message->type('information');
+        return $this;
+    }
+
+    /**
+     * Set important flag for the message
+     *
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
+     */
+    public function important()
+    {
+        $this->message->important();
+        return $this;
+    }
+
+    /**
+     * Set message timeout
+     *
+     * @param int  $timeout
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
+     */
+    public function timeout(int $timeout)
+    {
+        $this->message->timeout($timeout);
+        return $this;
+    }
+
+    /**
+     * Set message position
+     *
+     * @param string  $position (bottom|top)
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
+     */
+    public function position(string $position)
+    {
+        $this->message->position($position);
+        return $this;
+    }
+
+    /**
+     * Flash the message to session
+     */
+    public function flash()
+    {
+        session()->flash('flash_notification', $this->message->toArray());
     }
 }

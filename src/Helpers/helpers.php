@@ -3,23 +3,17 @@
  * helper functions
  *
  * @author: tuanha
- * @last-mod: 08-Sept-2019
+ * @last-mod: 09-Sept-2019
  */
 if (! function_exists('flashing')) {
     /**
      * Arrange for a flash message.
      *
      * @param  string|null $message
-     * @param  string      $level
-     * @return \Laracasts\Flash\FlashNotifier
+     * @return \Bkstar123\Flashing\Services\FlashingNotifier
      */
-    function flashing(
-        string $type = 'info',
-        string $message = '',
-        bool $important = false,
-        string $position = 'bottom',
-        int $timeout = 5000
-    ) {
-        app('flashing')->$type($message, $important, $position, $timeout);
+    function flashing(string $message = '') 
+    {
+        return app('flashing')->message($message);
     }
 }
