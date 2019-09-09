@@ -1,11 +1,11 @@
 @if(session()->has('flash_notification'))
-    <div style="position: absolute; {{ session('flash_notification')['position'] }}: 0; right: 0; z-index: 1">
+    <div style="position: absolute; {{ session('flash_notification')['position'] }}: 0; right: 0; z-index: 1"
+         class="col-md-4">
         <div class="toast" 
              id="bkstar123-flashing-toast"
              role="alert" 
              aria-atomic="true"
              aria-live="polite" 
-             style="width: 500px;"
             {{ session('flash_notification')['important'] ? 
                 'data-autohide=false' : 
                 'data-delay=' . session('flash_notification')['timeout'] }}>
