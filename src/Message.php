@@ -17,7 +17,7 @@ class Message
 	/**
 	 * @var $type  string
 	 */
-	public $type = 'info';
+	public $type = 'information';
 
 	/**
 	 * @var $important  bool
