@@ -18,8 +18,6 @@ $(function () {
             break;
     }
     $("#bkstar123-flashing-toast div.toast-header")
-        .css('color', 'white')
         .css('background-color', flashMsgHeaderColor);
-    $("#bkstar123-flashing-toast").css('max-width', "100%");
     $("#bkstar123-flashing-toast").toast('show');
 });

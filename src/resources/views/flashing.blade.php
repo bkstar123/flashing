@@ -5,11 +5,13 @@
              id="bkstar123-flashing-toast"
              role="alert" 
              aria-atomic="true"
-             aria-live="polite" 
+             aria-live="polite"
+             style="min-width: 100%"
             {{ session('flash_notification')['important'] ? 
                 'data-autohide=false' : 
                 'data-delay=' . session('flash_notification')['timeout'] }}>
-            <div class="toast-header">
+            <div class="toast-header"
+                 style="color:white">
                 <strong class="mr-auto">
                     {{ ucfirst(session('flash_notification')['type']) }}!
                 </strong>
