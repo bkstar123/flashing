@@ -12,7 +12,7 @@ if (! function_exists('flashing')) {
      * @param  string|null $message
      * @return \Bkstar123\Flashing\Services\FlashingNotifier
      */
-    function flashing(string $message = '') 
+    function flashing(string $message = '')
     {
         return app('flashing')->message($message);
     }
