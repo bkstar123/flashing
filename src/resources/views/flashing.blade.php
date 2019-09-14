@@ -1,6 +1,6 @@
 @if(session()->has('flash_notification'))
-    <div style="position: absolute; {{ session('flash_notification')['position'] }}: 0; right: 0; z-index: 1"
-         class="col-md-4">
+    <div class="col-md-4 position-fixed"
+         style="{{ session('flash_notification')['position'] }}: 0; right: 0; z-index: 1">
         <div class="toast" 
              id="bkstar123-flashing-toast"
              role="alert" 
