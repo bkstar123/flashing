@@ -2,7 +2,11 @@
 
 > A lightweight package to send flash messages in Laravel applications. This package only supports one single flash message at a time, and the flash message is displayed in the format of a toast notification  
 
-## 1. Installation
+## 1. Requirements
+- PHP 7.1.3+  
+- Laravel 5.5+  
+  
+## 2. Installation
 
     composer require bkstar123/flashing
 
@@ -11,7 +15,7 @@ After that, you need to publish the package's assets:
 
 It will copy a blade view element to your application's ```resources/views/vendor/bkstar123_flashing/flashing.blade.php```. You are free to customize this view element. Also, it will copy the package's javascript files to your application's```public/js/vendor/bkstar123)handling/*.js```
 
-## 2. Usage
+## 3. Usage
 
 **a) In view**
 
